@@ -74,3 +74,92 @@ def addBlock(reg1, reg2):
             return "Coś poszło niezgodnie z planem"
         
 def subBlock(reg1, reg2):
+    opcodes = ["0x28", "0x29", "0x2A", "0x2B"]
+
+    if reg2[0] != "[" :
+        returnReg1 = checkRegister(reg1.upper())
+        returnReg2 = checkRegister(reg2.upper())
+
+        if (returnReg1[0] == 1 or returnReg2[0] == 1):
+            return "Coś poszło niezgodnie z planem"
+        if (returnReg1[0] != 1 or returnReg2[0]):
+            return "Argumenty musza być tego samego typu"
+
+        BinaryValue = MOD[0] + decToBin(returnReg1[1]) + decToBin(returnReg2[1])
+        DecValue = int(BinaryValue, 2)
+        if (returnReg1[0] == 8):
+            return [opcodes[0], hex(DecValue)]
+        elif (returnReg1[0] == 16):
+            return ["0x66", opcodes[1], hex(DecValue)]
+        elif(returnReg1[0] == 32):
+            return [opcodes[1], hex(DecValue)]
+        
+        else: 
+            return "Coś poszło niezgodnie z planem"
+    
+    else: 
+        returnReg1 = checkRegister(reg1.upper())
+        returnReg2 = checkRegister(reg2[1:-1].upper())
+
+        if (returnReg1[0] == 1 or returnReg2[0] == 1):
+            return "Coś poszło niezgodnie z planem"
+        if (returnReg1[0] != 1 or returnReg2[0]):
+            return "Argumenty musza być tego samego typu"
+        
+        BinaryValue = MOD[1] + decToBin(returnReg1[1]) + decToBin(returnReg2[1])
+        DecValue = int(BinaryValue, 2)
+        if (returnReg1[0] == 8):
+            return [opcodes[2], hex(DecValue)]
+        elif (returnReg1[0] == 16):
+            return ["0x66", opcodes[3], hex(DecValue)]
+        elif(returnReg1[0] == 32):
+            return [opcodes[3], hex(DecValue)]
+        
+        else: 
+            return "Coś poszło niezgodnie z planem"
+        
+
+def andBlock(reg1, reg2):
+    opcodes = ["0x20", "0x21", "0x22", "0x23"]
+
+    if reg2[0] != "[" :
+        returnReg1 = checkRegister(reg1.upper())
+        returnReg2 = checkRegister(reg2.upper())
+
+        if (returnReg1[0] == 1 or returnReg2[0] == 1):
+            return "Coś poszło niezgodnie z planem"
+        if (returnReg1[0] != 1 or returnReg2[0]):
+            return "Argumenty musza być tego samego typu"
+
+        BinaryValue = MOD[0] + decToBin(returnReg1[1]) + decToBin(returnReg2[1])
+        DecValue = int(BinaryValue, 2)
+        if (returnReg1[0] == 8):
+            return [opcodes[0], hex(DecValue)]
+        elif (returnReg1[0] == 16):
+            return ["0x66", opcodes[1], hex(DecValue)]
+        elif(returnReg1[0] == 32):
+            return [opcodes[1], hex(DecValue)]
+        
+        else: 
+            return "Coś poszło niezgodnie z planem"
+    
+    else: 
+        returnReg1 = checkRegister(reg1.upper())
+        returnReg2 = checkRegister(reg2[1:-1].upper())
+
+        if (returnReg1[0] == 1 or returnReg2[0] == 1):
+            return "Coś poszło niezgodnie z planem"
+        if (returnReg1[0] != 1 or returnReg2[0]):
+            return "Argumenty musza być tego samego typu"
+        
+        BinaryValue = MOD[1] + decToBin(returnReg1[1]) + decToBin(returnReg2[1])
+        DecValue = int(BinaryValue, 2)
+        if (returnReg1[0] == 8):
+            return [opcodes[2], hex(DecValue)]
+        elif (returnReg1[0] == 16):
+            return ["0x66", opcodes[3], hex(DecValue)]
+        elif(returnReg1[0] == 32):
+            return [opcodes[3], hex(DecValue)]
+        
+        else: 
+            return "Coś poszło niezgodnie z planem"
